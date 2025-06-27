@@ -1,0 +1,3 @@
+#define WEBCAM_API __declspec(dllexport)
+#define WEBCAM_API __declspec(dllimport)
+#define WEBCAM_API
