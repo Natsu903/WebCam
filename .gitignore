@@ -4,3 +4,9 @@
 /src/mycodec/.vs
 /src/mycodec/mycodec
 /lib
+/bin/x64/camera1
+/bin/x64/video
+/bin/x64/cams.db
+/bin/x64/test.mp4
+/bin/x64/webcam.exe
+/bin/x64/webcam.pdb

@@ -9,39 +9,40 @@ struct AVCodecContext;
 struct AVPacket;
 struct XRational
 {
-	int num;//·Ö×Ó
-	int den;//·ÖÄ¸
+	int num;//åˆ†å­
+	int den;//åˆ†æ¯
 };
 
 class WEBCAM_API BaseFormat
 {
 public:
 	/**
-	 * ÉèÖÃÉÏÏÂÎÄ²¢ÇåÀíÉÏ´ÎÉèÖÃµÄÖµ£¬Èç¹û´«µİNULL£¬Ïàµ±ÓÚ¹Ø±ÕÉÏÏÂÎÄ£¬Ïß³Ì°²È«.
+	 * è®¾ç½®ä¸Šä¸‹æ–‡å¹¶æ¸…ç†ä¸Šæ¬¡è®¾ç½®çš„å€¼ï¼Œå¦‚æœä¼ é€’NULLï¼Œç›¸å½“äºå…³é—­ä¸Šä¸‹æ–‡ï¼Œçº¿ç¨‹å®‰å…¨.
 	 *
 	 * \param c
 	 */
 	void set_c(AVFormatContext* c);
 
 	/**
-	 * ¸´ÖÆ²ÎÊı£¬Ïß³Ì°²È«.
+	 * å¤åˆ¶å‚æ•°ï¼Œçº¿ç¨‹å®‰å…¨.
 	 * 
-	 * \param stream_index ¶ÔÓ¦c_->streamsÏÂ±ê
-	 * \param dst Êä³ö²ÎÊı
-	 * \return ÊÇ·ñ·µ»Ø³É¹¦
+	 * \param stream_index å¯¹åº”c_->streamsä¸‹æ ‡
+	 * \param dst è¾“å‡ºå‚æ•°
+	 * \return æ˜¯å¦è¿”å›æˆåŠŸ
 	 */
 	bool CopyPara(int stream_index, AVCodecParameters* dst);
 	bool CopyPara(int stream_index, AVCodecContext* dst);
 
-	//·µ»ØÖÇÄÜÖ¸Õë£¬¸´ÖÆÊÓÆµ²ÎÊı
+	//è¿”å›æ™ºèƒ½æŒ‡é’ˆï¼Œå¤åˆ¶è§†é¢‘å‚æ•°
 	std::shared_ptr<BasePara> CopyVideoPara();
 	std::shared_ptr<BasePara> CopyAudioPara();
 
-	//¸ù¾İtimebase»»ËãÊ±¼ä
+	//æ ¹æ®timebaseæ¢ç®—æ—¶é—´
 	bool RescaleTime(AVPacket* pkt, long long offset_pts, XRational time_base);
 	bool RescaleTime(AVPacket* pkt, long long offset_pts, AVRational* time_base);
+	long long RescaleToMs(long long pts, int index);
 
-	//·µ»Ø±£»¤³ÉÔ±
+	//è¿”å›ä¿æŠ¤æˆå‘˜
 	int video_index() { return video_index_; }
 	int audio_index() { return audio_index_; }
 
@@ -50,7 +51,7 @@ public:
 
 	int video_codec_id() { return video_codec_id_; }
 
-	//ÅĞ¶ÏÊÇ·ñ³¬Ê±
+	//åˆ¤æ–­æ˜¯å¦è¶…æ—¶
 	bool IsTimeout()
 	{
 		if (NowMs() - last_time_ > timeout_ms_)
@@ -67,15 +68,15 @@ public:
 	bool is_connected() { return is_connected_; }
 
 protected:
-	int timeout_ms_ = 0;		//³¬Ê±Ê±¼ä
-	long long last_time_ = 0;	//ÉÏ´Î½ÓÊÕµ½Êı¾İµÄÊ±¼ä
-	bool is_connected_ = false;	//ÊÇ·ñÁ´½Ó³É¹¦
-	AVFormatContext* c_=nullptr;		//·â×°½â·â×°ÉÏÏÂÎÄ
-	std::mutex mux_;			//»¥³âÁ¿
-	int video_index_ = 0;		//videoºÍaudioÔÚstreamÖĞµÄË÷Òı
+	int timeout_ms_ = 0;		//è¶…æ—¶æ—¶é—´
+	long long last_time_ = 0;	//ä¸Šæ¬¡æ¥æ”¶åˆ°æ•°æ®çš„æ—¶é—´
+	bool is_connected_ = false;	//æ˜¯å¦é“¾æ¥æˆåŠŸ
+	AVFormatContext* c_=nullptr;		//å°è£…è§£å°è£…ä¸Šä¸‹æ–‡
+	std::mutex mux_;			//äº’æ–¥é‡
+	int video_index_ = 0;		//videoå’Œaudioåœ¨streamä¸­çš„ç´¢å¼•
 	int audio_index_ = 1;
 	XRational video_time_base_ = { 1,25 };
 	XRational audio_time_base_ = { 1,9000 };
-	int video_codec_id_ = 0;	//±àÂëÆ÷ID
+	int video_codec_id_ = 0;	//ç¼–ç å™¨ID
 };
 

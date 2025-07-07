@@ -9,6 +9,27 @@ extern "C"
 void MuxTask::Main()
 {
     xmux_.WriteHead();
+    //找到关键帧
+    while (!is_exit_)
+    {
+		std::unique_lock<std::mutex>lock(mux_);
+		auto pkt = pkts_.Pop();
+		if (!pkt)
+		{
+			MSleep(1);
+			continue;
+		}
+        //关键帧
+        if (pkt->stream_index == xmux_.video_index() && pkt->flags & AV_PKT_FLAG_KEY)
+        {
+            xmux_.Write(pkt);
+            av_packet_free(&pkt);
+            break;
+        }
+        //丢掉非视频关键帧
+        av_packet_free(&pkt);
+    }
+
     while (!is_exit_)
     {
         std::unique_lock<std::mutex>lock(mux_);

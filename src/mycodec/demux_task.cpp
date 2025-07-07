@@ -12,7 +12,7 @@ void DemuxTask::Main()
 	{
 		if (!demux_.Read(&pkt))
 		{
-			//¶ÁÈ¡Ê§°Ü
+			//è¯»å–å¤±è´¥
 			std::cout << "-" << std::flush;
 			if (!demux_.is_connected())
 			{
@@ -21,7 +21,17 @@ void DemuxTask::Main()
 			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 			continue;
 		}
+		//æ’­æ”¾é€Ÿåº¦æ§åˆ¶
 		std::cout << "." << std::flush;
+		if (syn_type_ == SYN_VIDEO && pkt.stream_index == demux_.video_index())
+		{
+			auto dur = demux_.RescaleToMs(pkt.duration, pkt.stream_index);
+			if (dur <= 0)
+			{
+				dur = 40;
+			}
+			MSleep(40);
+		}
 		Next(&pkt);
 		av_packet_unref(&pkt);
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -31,7 +41,7 @@ void DemuxTask::Main()
 bool DemuxTask::Open(std::string url, int timeout_ms)
 {
 	LOGDEBUG("DemuxTask::Open begin");
-	demux_.set_c(nullptr);//¶Ï¿ªÖ®Ç°µÄÁ¬½Ó
+	demux_.set_c(nullptr);//æ–­å¼€ä¹‹å‰çš„è¿æ¥
 	this->url_ = url;
 	this->timeout_ms_ = timeout_ms;
 	auto c = demux_.Open(url.c_str());

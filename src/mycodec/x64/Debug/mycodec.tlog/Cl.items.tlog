@@ -1,0 +1,13 @@
+E:\cppproject\WebCam\src\mycodec\basecodec.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\basecodec.obj
+E:\cppproject\WebCam\src\mycodec\baseformat.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\baseformat.obj
+E:\cppproject\WebCam\src\mycodec\decode.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\decode.obj
+E:\cppproject\WebCam\src\mycodec\decode_task.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\decode_task.obj
+E:\cppproject\WebCam\src\mycodec\demux.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\demux.obj
+E:\cppproject\WebCam\src\mycodec\demux_task.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\demux_task.obj
+E:\cppproject\WebCam\src\mycodec\encode.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\encode.obj
+E:\cppproject\WebCam\src\mycodec\main.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\main.obj
+E:\cppproject\WebCam\src\mycodec\mux.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\mux.obj
+E:\cppproject\WebCam\src\mycodec\mux_task.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\mux_task.obj
+E:\cppproject\WebCam\src\mycodec\private_sdl.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\private_sdl.obj
+E:\cppproject\WebCam\src\mycodec\tools.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\tools.obj
+E:\cppproject\WebCam\src\mycodec\video_view.cpp;E:\cppproject\WebCam\src\mycodec\x64\Debug\video_view.obj

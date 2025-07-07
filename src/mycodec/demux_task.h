@@ -1,21 +1,28 @@
 #pragma once
 #include "tools.h"
 #include "demux.h"
+
+enum SYN_TYPE
+{
+	SYN_NONE = 0,//ä¸åšåŒæ­¥
+	SYN_VIDEO = 1//æ ¹æ®è§†é¢‘åŒæ­¥ï¼Œä¸å¤„ç†éŸ³é¢‘
+};
+
 class WEBCAM_API DemuxTask :public BaseThread
 {
 public:
 	void Main();
 
 	/**
-	 * ´ò¿ª½â·â×°.
+	 * æ‰“å¼€è§£å°è£….
 	 * 
-	 * \param url rtspµØÖ·
-	 * \param timeout_ms ³¬Ê±Ê±¼ä
+	 * \param url rtspåœ°å€
+	 * \param timeout_ms è¶…æ—¶æ—¶é—´
 	 * \return 
 	 */
 	bool Open(std::string url,int timeout_ms = 1000);
 
-	//·µ»ØÖÇÄÜÖ¸Õë£¬¸´ÖÆÊÓÆµ²ÎÊı
+	//è¿”å›æ™ºèƒ½æŒ‡é’ˆï¼Œå¤åˆ¶è§†é¢‘å‚æ•°
 	std::shared_ptr<BasePara> CopyVideoPara()
 	{
 		return demux_.CopyVideoPara();
@@ -24,10 +31,12 @@ public:
 	{
 		return demux_.CopyAudioPara();
 	}
+	void set_syn_type(SYN_TYPE type) { syn_type_ = type; }
 
 private:
 	Demux demux_;
 	std::string url_;
-	int timeout_ms_ = 0; //³¬Ê±Ê±¼ä
+	int timeout_ms_ = 0; //è¶…æ—¶æ—¶é—´
+	SYN_TYPE syn_type_= SYN_NONE;
 };
 

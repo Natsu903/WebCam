@@ -1,0 +1,507 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(524,5): warning MSB8004: Output 目录未以斜杠结尾。  此生成实例将添加斜杠，因为必须有这个斜杠才能正确计算 Output 目录。
+  basecodec.cpp
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“basecodec.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“basecodec.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“basecodec.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“basecodec.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\basecodec.h(49,13): warning C4251: “Codec::mux_”:“std::mutex”需要有 dll 接口以供“Codec”的客户端使用
+  (编译源文件“basecodec.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\include\libavutil\rational.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“basecodec.cpp”)
+  
+  baseformat.cpp
+E:\cppproject\WebCam\src\mycodec\baseformat.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\cppproject\WebCam\src\mycodec\baseformat.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“baseformat.cpp”)
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“baseformat.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“baseformat.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“baseformat.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“baseformat.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(104,13): warning C4251: “Video_View::mtx_”:“std::mutex”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“baseformat.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(111,16): warning C4251: “Video_View::ifs_”:“std::basic_ifstream<char,std::char_traits<char>>”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“baseformat.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\fstream(23,7):
+      参见“std::basic_ifstream<char,std::char_traits<char>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\baseformat.h(75,13): warning C4251: “BaseFormat::mux_”:“std::mutex”需要有 dll 接口以供“BaseFormat”的客户端使用
+  (编译源文件“baseformat.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\include\libavutil\rational.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“baseformat.cpp”)
+  
+E:\cppproject\WebCam\src\mycodec\baseformat.cpp(63,23): warning C4018: “<”: 有符号/无符号不匹配
+E:\cppproject\WebCam\src\mycodec\baseformat.cpp(85,39): warning C4018: “>”: 有符号/无符号不匹配
+E:\cppproject\WebCam\src\mycodec\baseformat.cpp(95,39): warning C4018: “>”: 有符号/无符号不匹配
+E:\cppproject\WebCam\src\mycodec\baseformat.cpp(152,28): warning C4018: “>”: 有符号/无符号不匹配
+  decode.cpp
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“decode.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“decode.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“decode.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“decode.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\basecodec.h(49,13): warning C4251: “Codec::mux_”:“std::mutex”需要有 dll 接口以供“Codec”的客户端使用
+  (编译源文件“decode.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\include\libavutil\rational.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“decode.cpp”)
+  
+  decode_task.cpp
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“decode_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“decode_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“decode_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“decode_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\basecodec.h(49,13): warning C4251: “Codec::mux_”:“std::mutex”需要有 dll 接口以供“Codec”的客户端使用
+  (编译源文件“decode_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\decode_task.h(24,13): warning C4251: “DecodeTask::mux_”:“std::mutex”需要有 dll 接口以供“DecodeTask”的客户端使用
+  (编译源文件“decode_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\include\libavutil\rational.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“decode_task.cpp”)
+  
+  demux.cpp
+E:\cppproject\WebCam\src\mycodec\baseformat.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“demux.cpp”)
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“demux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“demux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“demux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“demux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(104,13): warning C4251: “Video_View::mtx_”:“std::mutex”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“demux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(111,16): warning C4251: “Video_View::ifs_”:“std::basic_ifstream<char,std::char_traits<char>>”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“demux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\fstream(23,7):
+      参见“std::basic_ifstream<char,std::char_traits<char>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\baseformat.h(75,13): warning C4251: “BaseFormat::mux_”:“std::mutex”需要有 dll 接口以供“BaseFormat”的客户端使用
+  (编译源文件“demux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\include\libavutil\rational.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“demux.cpp”)
+  
+  demux_task.cpp
+E:\cppproject\WebCam\src\mycodec\demux_task.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\cppproject\WebCam\src\mycodec\demux_task.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“demux_task.cpp”)
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“demux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“demux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“demux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“demux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\baseformat.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“demux_task.cpp”)
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(104,13): warning C4251: “Video_View::mtx_”:“std::mutex”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“demux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(111,16): warning C4251: “Video_View::ifs_”:“std::basic_ifstream<char,std::char_traits<char>>”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“demux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\fstream(23,7):
+      参见“std::basic_ifstream<char,std::char_traits<char>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\baseformat.h(75,13): warning C4251: “BaseFormat::mux_”:“std::mutex”需要有 dll 接口以供“BaseFormat”的客户端使用
+  (编译源文件“demux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\demux_task.h(38,14): warning C4251: “DemuxTask::url_”:“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口以供“DemuxTask”的客户端使用
+  (编译源文件“demux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(541,7):
+      参见“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”的声明
+  
+E:\cppproject\WebCam\include\libavutil\rational.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“demux_task.cpp”)
+  
+  encode.cpp
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“encode.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“encode.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“encode.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“encode.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\basecodec.h(49,13): warning C4251: “Codec::mux_”:“std::mutex”需要有 dll 接口以供“Codec”的客户端使用
+  (编译源文件“encode.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\include\libavutil\rational.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“encode.cpp”)
+  
+  main.cpp
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“main.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“main.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“main.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“main.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\demux_task.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“main.cpp”)
+  
+E:\cppproject\WebCam\src\mycodec\baseformat.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“main.cpp”)
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(104,13): warning C4251: “Video_View::mtx_”:“std::mutex”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“main.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(111,16): warning C4251: “Video_View::ifs_”:“std::basic_ifstream<char,std::char_traits<char>>”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“main.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\fstream(23,7):
+      参见“std::basic_ifstream<char,std::char_traits<char>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\baseformat.h(75,13): warning C4251: “BaseFormat::mux_”:“std::mutex”需要有 dll 接口以供“BaseFormat”的客户端使用
+  (编译源文件“main.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\demux_task.h(38,14): warning C4251: “DemuxTask::url_”:“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口以供“DemuxTask”的客户端使用
+  (编译源文件“main.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\xstring(541,7):
+      参见“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\basecodec.h(49,13): warning C4251: “Codec::mux_”:“std::mutex”需要有 dll 接口以供“Codec”的客户端使用
+  (编译源文件“main.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\decode_task.h(24,13): warning C4251: “DecodeTask::mux_”:“std::mutex”需要有 dll 接口以供“DecodeTask”的客户端使用
+  (编译源文件“main.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\mux_task.h(32,13): warning C4251: “MuxTask::mux_”:“std::mutex”需要有 dll 接口以供“MuxTask”的客户端使用
+  (编译源文件“main.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+  mux.cpp
+E:\cppproject\WebCam\src\mycodec\baseformat.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“mux.cpp”)
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“mux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“mux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“mux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“mux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(104,13): warning C4251: “Video_View::mtx_”:“std::mutex”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“mux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(111,16): warning C4251: “Video_View::ifs_”:“std::basic_ifstream<char,std::char_traits<char>>”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“mux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\fstream(23,7):
+      参见“std::basic_ifstream<char,std::char_traits<char>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\baseformat.h(75,13): warning C4251: “BaseFormat::mux_”:“std::mutex”需要有 dll 接口以供“BaseFormat”的客户端使用
+  (编译源文件“mux.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\include\libavutil\rational.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“mux.cpp”)
+  
+  mux_task.cpp
+E:\cppproject\WebCam\src\mycodec\mux_task.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“mux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“mux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“mux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“mux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\baseformat.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“mux_task.cpp”)
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(104,13): warning C4251: “Video_View::mtx_”:“std::mutex”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“mux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(111,16): warning C4251: “Video_View::ifs_”:“std::basic_ifstream<char,std::char_traits<char>>”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“mux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\fstream(23,7):
+      参见“std::basic_ifstream<char,std::char_traits<char>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\baseformat.h(75,13): warning C4251: “BaseFormat::mux_”:“std::mutex”需要有 dll 接口以供“BaseFormat”的客户端使用
+  (编译源文件“mux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\mux_task.h(32,13): warning C4251: “MuxTask::mux_”:“std::mutex”需要有 dll 接口以供“MuxTask”的客户端使用
+  (编译源文件“mux_task.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\include\libavutil\rational.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“mux_task.cpp”)
+  
+  private_sdl.cpp
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“private_sdl.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“private_sdl.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“private_sdl.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“private_sdl.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(104,13): warning C4251: “Video_View::mtx_”:“std::mutex”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“private_sdl.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(111,16): warning C4251: “Video_View::ifs_”:“std::basic_ifstream<char,std::char_traits<char>>”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“private_sdl.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\fstream(23,7):
+      参见“std::basic_ifstream<char,std::char_traits<char>>”的声明
+  
+  tools.cpp
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“tools.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“tools.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“tools.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“tools.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\include\libavutil\rational.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“tools.cpp”)
+  
+  video_view.cpp
+E:\cppproject\WebCam\src\mycodec\tools.h(94,14): warning C4251: “BaseThread::th_”:“std::thread”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“video_view.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\thread(42,19):
+      参见“std::thread”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(95,13): warning C4251: “BaseThread::m_”:“std::mutex”需要有 dll 接口以供“BaseThread”的客户端使用
+  (编译源文件“video_view.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(129,23): warning C4251: “SafetyAVPacketList::pkts_”:“std::list<AVPacket *,std::allocator<AVPacket *>>”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“video_view.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\list(769,7):
+      参见“std::list<AVPacket *,std::allocator<AVPacket *>>”的声明
+  
+E:\cppproject\WebCam\src\mycodec\tools.h(131,13): warning C4251: “SafetyAVPacketList::mux_”:“std::mutex”需要有 dll 接口以供“SafetyAVPacketList”的客户端使用
+  (编译源文件“video_view.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(104,13): warning C4251: “Video_View::mtx_”:“std::mutex”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“video_view.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\mutex(98,19):
+      参见“std::mutex”的声明
+  
+E:\cppproject\WebCam\src\mycodec\video_view.h(111,16): warning C4251: “Video_View::ifs_”:“std::basic_ifstream<char,std::char_traits<char>>”需要有 dll 接口以供“Video_View”的客户端使用
+  (编译源文件“video_view.cpp”)
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\fstream(23,7):
+      参见“std::basic_ifstream<char,std::char_traits<char>>”的声明
+  
+E:\cppproject\WebCam\include\libavutil\rational.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“video_view.cpp”)
+  
+  正在生成代码...
+E:\cppproject\WebCam\src\mycodec\private_sdl.cpp(42,1): warning C4715: “`InitVideo'::`2'::<lambda_1>::operator()”: 不是所有的控件路径都返回值
+    正在创建库 ..\..\lib\x64\mycodec.lib 和对象 ..\..\lib\x64\mycodec.exp
+  mycodec.vcxproj -> E:\cppproject\WebCam\bin\x64\mycodec.dll

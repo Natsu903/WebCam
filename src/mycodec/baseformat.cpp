@@ -15,22 +15,22 @@ extern "C"
 static int TimeoutCallback(void* para)
 {
     auto bf = (BaseFormat*)para;
-    if (bf->IsTimeout())return -1;//³¬Ê±ÍË³ö-1
+    if (bf->IsTimeout())return -1;//è¶…æ—¶é€€å‡º-1
     return 0;
 }
 
 void BaseFormat::set_c(AVFormatContext* c)
 {
 	std::unique_lock<std::mutex>lock(mux_);
-    if (c_)//ÇåÀíÔ­Öµ
+    if (c_)//æ¸…ç†åŸå€¼
     {
-        if (c_->oformat)//Êä³öÉÏÏÂÎÄ
+        if (c_->oformat)//è¾“å‡ºä¸Šä¸‹æ–‡
         {
             if (c_->pb)
                 avio_closep(&c_->pb);
             avformat_free_context(c_);
         }
-        else if (c_->iformat)//ÊäÈëÉÏÏÂÎÄ
+        else if (c_->iformat)//è¾“å…¥ä¸Šä¸‹æ–‡
         {
             avformat_close_input(&c_);
         }
@@ -47,7 +47,7 @@ void BaseFormat::set_c(AVFormatContext* c)
     }
     is_connected_ = true;
 
-    //¼ÆÊ±ÓÃÓÚ³¬Ê±ÅĞ¶Ï
+    //è®¡æ—¶ç”¨äºè¶…æ—¶åˆ¤æ–­
     last_time_ = NowMs();
 
     if (timeout_ms_ > 0)
@@ -56,10 +56,10 @@ void BaseFormat::set_c(AVFormatContext* c)
 		c_->interrupt_callback = cb;
     }
 
-    //Çø·ÖÊÇ·ñÓĞÒôÆµÊÓÆµÁ÷
+    //åŒºåˆ†æ˜¯å¦æœ‰éŸ³é¢‘è§†é¢‘æµ
     audio_index_ = -1;
     video_index_ = -1;
-    //Çø·ÖÒôÊÓÆµË÷Òı
+    //åŒºåˆ†éŸ³è§†é¢‘ç´¢å¼•
     for (int i = 0; i < c->nb_streams; i++)
     {
         if (c->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_AUDIO)
@@ -144,6 +144,15 @@ bool BaseFormat::RescaleTime(AVPacket* pkt, long long offset_pts, AVRational* ti
 	pkt->duration = av_rescale_q(pkt->duration, *time_base, out_stream->time_base);
 	pkt->pos = -1;
 	return true;
+}
+
+long long BaseFormat::RescaleToMs(long long pts, int index)
+{
+    std::unique_lock<std::mutex> lock(mux_);
+    if (!c_||index<0||index>c_->nb_streams)return 0;
+    auto in_timebase = c_->streams[index]->time_base;
+    AVRational out_timebase = { 1,1000 };
+	return av_rescale_q(pts, in_timebase, out_timebase);
 }
 
 void BaseFormat::set_timeout_ms(int ms)
