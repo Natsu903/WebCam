@@ -4,27 +4,44 @@
 class WEBCAM_API DecodeTask :public BaseThread
 {
 public:
-	//Ïß³ÌÖ÷º¯Êı
+	//çº¿ç¨‹ä¸»å‡½æ•°
 	void Main() override;
-	//ÔğÈÎÁ´´¦Àíº¯Êı
+	//è´£ä»»é“¾å¤„ç†å‡½æ•°
 	void Do(AVPacket* pkt) override;
-	//´ò¿ª½âÂëÆ÷
+	//æ‰“å¼€è§£ç å™¨
 	bool Open(AVCodecParameters* para);
 
 
 	/**	
-	* ·µ»Øµ±Ç°ĞèÒªäÖÈ¾µÄFrame, Èç¹ûÃ»ÓĞ·µ»Ønull
-	* need_view_¿ØÖÆäÖÈ¾
-	* Ïß³Ì°²È«.
-	* ·µ»Ø½á¹ûĞèÒªÓÃFreeFrameÊÍ·Å
+	* è¿”å›å½“å‰éœ€è¦æ¸²æŸ“çš„Frame, å¦‚æœæ²¡æœ‰è¿”å›null
+	* need_view_æ§åˆ¶æ¸²æŸ“
+	* çº¿ç¨‹å®‰å…¨.
+	* è¿”å›ç»“æœéœ€è¦ç”¨FreeFrameé‡Šæ”¾
 	*/
 	AVFrame* GetFrame();
 
+	void set_stream_index(int i) { stream_index_ = i; }
+
+	void set_frame_cache(bool is) { frame_cache_ = is; }
+
+	bool is_open() { return is_open_; }
+
+	//è®¾ç½®åŒæ­¥æ—¶é—´
+	void set_syn_pts(long long p) { syn_pts_ = p; }
+	void set_block_size(int s) { block_size_ = s; }
+
+	void Stop();
 private:
+	int block_size_ = 0;//é˜»å¡å¤§å°
+	long long syn_pts_ = -1;//åŒæ­¥æ—¶é—´ -1ä¸åŒæ­¥
+	bool is_open_ = false;
+	int stream_index_ = 0;
 	std::mutex mux_;
 	Decode decode_;
 	SafetyAVPacketList pkt_list_;
-	AVFrame* frame_ = nullptr;//½âÂëºó´æ´¢
-	bool need_view_ = false;//ÊÇ·ñĞèÒªäÖÈ¾£¬Ã¿Ö¡Ö»äÖÈ¾Ò»´Î£¬Í¨¹ıgetframe»ñÈ¡
+	AVFrame* frame_ = nullptr;//è§£ç åå­˜å‚¨
+	bool need_view_ = false;//æ˜¯å¦éœ€è¦æ¸²æŸ“ï¼Œæ¯å¸§åªæ¸²æŸ“ä¸€æ¬¡ï¼Œé€šè¿‡getframeè·å–
+	std::list<AVFrame*>frames_;//å­˜å‚¨éŸ³é¢‘ç¼“å†²
+	bool frame_cache_=false;//æ˜¯å¦ç¼“å†²frameé˜Ÿåˆ—
 };
 

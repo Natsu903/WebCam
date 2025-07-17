@@ -285,9 +285,9 @@ void WebCam::PlayVideo(QModelIndex index)
     if (!item)return;
     QString path = item->data(Qt::UserRole).toString();
     qDebug() << path;
-    static PPlayVideo play;
+    PPlayVideo play;
     play.Open(path.toUtf8());
-    play.show();
+    play.exec();
 }
 
 void WebCam::mouseMoveEvent(QMouseEvent * event)

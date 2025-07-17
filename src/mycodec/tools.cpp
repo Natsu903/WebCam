@@ -27,14 +27,17 @@ void BaseThread::Stop()
 	ss << "Demuxthread::Stop() begin" << index_;
 	LOGINFO(ss.str());
 	is_exit_ = true;
+}
+
+void BaseThread::Wait()
+{
+	std::stringstream ss;
 	if (th_.joinable())
 	{
 		th_.join();
 	}
-	ss.str("");
 	ss << "Demuxthread::Stop() end" << index_;
 	LOGINFO(ss.str());
-
 }
 
 BasePara* BasePara::Create()
@@ -97,6 +100,22 @@ void SafetyAVPacketList::Push(AVPacket* pkt)
 	}
 }
 
+int SafetyAVPacketList::Size()
+{
+	std::unique_lock<std::mutex>lock(mux_);
+	return pkts_.size();
+}
+
+void SafetyAVPacketList::Clear()
+{
+	std::unique_lock<std::mutex>lock(mux_);
+	while (pkts_.empty())
+	{
+		av_packet_free(&pkts_.front());
+		pkts_.pop_front();
+	}
+}
+
 void MSleep(unsigned int ms)
 {
 	//高精度计时器初始化
@@ -134,4 +153,9 @@ void PrintErr(int err)
 	char buf[1024] = { 0 };
 	av_strerror(err, buf, sizeof(buf) - 1);
 	std::cerr << buf << std::endl;
+}
+
+long long RRescale(long long pts, AVRational* src_time_base, AVRational* des_time_base)
+{
+	return av_rescale_q(pts, *src_time_base, *des_time_base);
 }

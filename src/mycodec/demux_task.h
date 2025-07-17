@@ -11,6 +11,10 @@ enum SYN_TYPE
 class WEBCAM_API DemuxTask :public BaseThread
 {
 public:
+	//返回保护成员
+	int video_index() { return demux_.video_index(); }
+	int audio_index() { return demux_.audio_index(); }
+
 	void Main();
 
 	/**
@@ -33,6 +37,7 @@ public:
 	}
 	void set_syn_type(SYN_TYPE type) { syn_type_ = type; }
 
+	void Stop();
 private:
 	Demux demux_;
 	std::string url_;

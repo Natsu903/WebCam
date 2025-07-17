@@ -82,7 +82,8 @@
     <TargetName>WebCam</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <TargetName>WebCam</TargetName>
+    <TargetName>mycodec</TargetName>
+    <OutDir>..\..\bin\x64</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -136,14 +137,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;WEBCAM_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\..\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>..\..\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="audioplay.h" />
     <ClInclude Include="basecodec.h" />
     <ClInclude Include="baseformat.h" />
     <ClInclude Include="decode.h" />
@@ -153,11 +157,13 @@
     <ClInclude Include="encode.h" />
     <ClInclude Include="mux.h" />
     <ClInclude Include="mux_task.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="private_sdl.h" />
     <ClInclude Include="tools.h" />
     <ClInclude Include="video_view.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="audioplay.cpp" />
     <ClCompile Include="basecodec.cpp" />
     <ClCompile Include="baseformat.cpp" />
     <ClCompile Include="decode.cpp" />
@@ -165,9 +171,9 @@
     <ClCompile Include="demux.cpp" />
     <ClCompile Include="demux_task.cpp" />
     <ClCompile Include="encode.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="mux.cpp" />
     <ClCompile Include="mux_task.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="private_sdl.cpp" />
     <ClCompile Include="tools.cpp" />
     <ClCompile Include="video_view.cpp" />

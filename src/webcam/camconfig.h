@@ -1,3 +1,4 @@
+#include "audioplay.h"
 #pragma once
 #include <vector>
 #include <mutex>

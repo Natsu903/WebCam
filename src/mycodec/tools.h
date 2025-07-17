@@ -1,6 +1,6 @@
 #pragma once
 
-//¼æÈİLinux
+//å…¼å®¹Linux
 #ifdef _WIN32
 #ifdef WEBCAM_EXPORTS
 #define WEBCAM_API __declspec(dllexport)
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <list>
 
-//ÈÕÖ¾
+//æ—¥å¿—
 enum LogLevel
 {
 	LOG_TYPE_DEBUG,
@@ -42,7 +42,7 @@ struct AVRational;
 struct AVFrame;
 struct AVCodecContext;
 
-//¸ß¾«¶È¶¨Ê±ĞİÃß
+//é«˜ç²¾åº¦å®šæ—¶ä¼‘çœ 
 WEBCAM_API void MSleep(unsigned int ms);
 
 WEBCAM_API long long NowMs();
@@ -51,19 +51,25 @@ WEBCAM_API void FreeFrame(AVFrame** frame);
 
 WEBCAM_API void PrintErr(int err);
 
+//æ ¹æ®æ—¶é—´åŸºæ•°è®¡ç®—
+WEBCAM_API long long RRescale(long long pts, AVRational* src_time_base, AVRational* des_time_base);
+
 class WEBCAM_API BaseThread
 {
 public:
-	//Æô¶¯Ïß³Ì
+	//å¯åŠ¨çº¿ç¨‹
 	virtual void Start();
 
-	//½áÊøÏß³Ì
+	//ç»“æŸçº¿ç¨‹
 	virtual void Stop();
 
-	//Ö´ĞĞÈÎÎñ£¬ĞèÒªÖØÔØ
+	//ç­‰å¾…çº¿ç¨‹é€€å‡º
+	virtual void Wait();
+
+	//æ‰§è¡Œä»»åŠ¡ï¼Œéœ€è¦é‡è½½
 	virtual void Do(AVPacket* pkt){}
 
-	//´«µİµ½ÏÂ¸öÔğÈÎÁ´º¯Êı
+	//ä¼ é€’åˆ°ä¸‹ä¸ªè´£ä»»é“¾å‡½æ•°
 	virtual void Next(AVPacket* pkt)
 	{
 		std::unique_lock<std::mutex> lock(m_);
@@ -73,7 +79,7 @@ public:
 		}
 	}
 
-	//ÉèÖÃÔğÈÎÁ´ÏÂÒ»¸ö½Úµã
+	//è®¾ç½®è´£ä»»é“¾ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
 	void set_next(BaseThread* bt)
 	{
 		std::unique_lock<std::mutex> lock(m_);
@@ -81,52 +87,54 @@ public:
 	}
 
 protected:
-	//Ïß³ÌÈë¿Úº¯Êı
+	//çº¿ç¨‹å…¥å£å‡½æ•°
 	virtual void Main()=0;
 
-	//±êÖ¾Ïß³ÌÍË³ö
+	//æ ‡å¿—çº¿ç¨‹é€€å‡º
 	bool is_exit_ = false;
 
-	//Ïß³ÌË÷ÒıºÅ
+	//çº¿ç¨‹ç´¢å¼•å·
 	int index_ = 0;
 
 private:
 	std::thread th_;
 	std::mutex m_;
-	BaseThread* next_ = nullptr;//ÔğÈÎÁ´ÏÂÒ»¸ö½Úµã
+	BaseThread* next_ = nullptr;//è´£ä»»é“¾ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
 };
 
 class Tools
 {
 };
 
-//ÒôÊÓÆµ²ÎÊı
+//éŸ³è§†é¢‘å‚æ•°
 class WEBCAM_API BasePara
 {
 public:
-	AVCodecParameters* para = nullptr;//ÒôÊÓÆµ²ÎÊı
-	AVRational* time_base = nullptr;//Ê±¼ä»ùÊı
+	AVCodecParameters* para = nullptr;//éŸ³è§†é¢‘å‚æ•°
+	AVRational* time_base = nullptr;//æ—¶é—´åŸºæ•°
 
-	//´´½¨¶ÔÏó
+	//åˆ›å»ºå¯¹è±¡
 	static BasePara* Create();
 	~BasePara();
 private:
-	//½ûÖ¹´´½¨Õ»ÖĞ¶ÔÏó
+	//ç¦æ­¢åˆ›å»ºæ ˆä¸­å¯¹è±¡
 	BasePara();
 };
 
 /**
- * Ïß³Ì°²È«avpacket list.
- * ÔğÈÎÁ´ÊÕµ½Êı¾İÏÈ½»ÓÉµ½ÁĞ±íÖĞ£¬Ïß³ÌÔÙ´ÓÁĞ±íÖĞÈ¡µÃ´¦Àí
+ * çº¿ç¨‹å®‰å…¨avpacket list.
+ * è´£ä»»é“¾æ”¶åˆ°æ•°æ®å…ˆäº¤ç”±åˆ°åˆ—è¡¨ä¸­ï¼Œçº¿ç¨‹å†ä»åˆ—è¡¨ä¸­å–å¾—å¤„ç†
  */
 class WEBCAM_API SafetyAVPacketList
 {
 public:
 	AVPacket* Pop();
 	void Push(AVPacket* pkt);
+	int Size();
+	void Clear();
 
 private:
 	std::list<AVPacket*> pkts_;
-	int max_packets_ = 100;//×î´óÁĞ±íÊıÁ¿£¬³¬³öÇåÀí
+	int max_packets_ = 1000;//æœ€å¤§åˆ—è¡¨æ•°é‡ï¼Œè¶…å‡ºæ¸…ç†
 	std::mutex mux_;
 };

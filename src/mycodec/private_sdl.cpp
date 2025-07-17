@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * \file   private_sdl.cpp
- * \brief  ÊµÏÖSDLÊµÏÖµÄË½ÓĞ»¯£¬½«ÊÓÆµäÖÈ¾²¿·Ö´ÓÖ÷ÒµÎñÖĞ°şÀë
+ * \brief  å®ç°SDLå®ç°çš„ç§æœ‰åŒ–ï¼Œå°†è§†é¢‘æ¸²æŸ“éƒ¨åˆ†ä»ä¸»ä¸šåŠ¡ä¸­å‰¥ç¦»
  * 
  * \author Administrator
  * \date   April 2025
@@ -13,31 +13,19 @@
 #pragma comment(lib,"SDL2.lib")
 
 /**
- * ³õÊ¼»¯SDL£¬²¢È·±£ÓĞÇÒÖ»³õÊ¼»¯Ò»´Î.
+ * åˆå§‹åŒ–SDLï¼Œå¹¶ç¡®ä¿æœ‰ä¸”åªåˆå§‹åŒ–ä¸€æ¬¡.
  *
- * \return ³É¹¦·µ»ØtrueÊ§°Üfalse
+ * \return æˆåŠŸè¿”å›trueå¤±è´¥false
  */
 static bool InitVideo()
 {
-    //static bool isfirst = true;
-    //static std::mutex mux;
-    //std::unique_lock<std::mutex> sdl_lock(mux);
-    //if (!isfirst) return true;
-    //isfirst = false;
-    //if (!SDL_Init(SDL_INIT_VIDEO))
-    //{
-    //    std::cout << SDL_GetError() << std::endl;
-    //    return false;
-    //}
-    //SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
-    //return true;
 	static std::once_flag init_flag;
 	std::call_once(init_flag, []() {
 		if (SDL_Init(SDL_INIT_VIDEO) != 0) {
 			std::cerr << "SDL_Init failed: " << SDL_GetError() << std::endl;
 			return false;
 		}
-        //½«ÎÆÀí¹ıÂËÉèÖÃÎªÏßĞÔ
+        //å°†çº¹ç†è¿‡æ»¤è®¾ç½®ä¸ºçº¿æ€§
 		SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 		});
 	return true;
@@ -53,13 +41,13 @@ bool PrivateSDL::Init(int w, int h, Format fmt, void* win_id)
     height_ = h;
     format_ = fmt;
 
-    //Çå³ıÏÖÓĞµÄrender_£¬texture_£¬¾İSDLµÄÎÄµµ£¬ÕâĞ©º¯Êı¿ÉÒÔ°²È«µØ´«ÈëNULL
+    //æ¸…é™¤ç°æœ‰çš„render_ï¼Œtexture_ï¼Œæ®SDLçš„æ–‡æ¡£ï¼Œè¿™äº›å‡½æ•°å¯ä»¥å®‰å…¨åœ°ä¼ å…¥NULL
 	SDL_DestroyRenderer(render_);
 	SDL_DestroyTexture(texture_);
     render_ = nullptr;
     texture_ = nullptr;
 
-    //ÅĞ¶ÏÃ»ÓĞÏÖ³É´°¿ÚÊ±µÄ´¦Àí
+    //åˆ¤æ–­æ²¡æœ‰ç°æˆçª—å£æ—¶çš„å¤„ç†
     if (!win_)
     {
         if (!win_id_)
@@ -76,14 +64,14 @@ bool PrivateSDL::Init(int w, int h, Format fmt, void* win_id)
 		std::cerr << SDL_GetError() << std::endl;
 		return false;
 	}
-    //´´½¨Renderer
+    //åˆ›å»ºRenderer
     render_ = SDL_CreateRenderer(win_, -1, SDL_RENDERER_ACCELERATED);
     if (!render_)
 	{
 		std::cerr << SDL_GetError() << std::endl;
 		return false;
 	}
-    //¸ù¾İÊÓÆµformat¸ü¸Ä²ÎÊısdl_fmt
+    //æ ¹æ®è§†é¢‘formatæ›´æ”¹å‚æ•°sdl_fmt
     unsigned int sdl_fmt = SDL_PIXELFORMAT_RGBA8888;
     switch (fmt)
     {
@@ -105,7 +93,7 @@ bool PrivateSDL::Init(int w, int h, Format fmt, void* win_id)
     default:
         break;
     }
-    //´´½¨Texture
+    //åˆ›å»ºTexture
     texture_ = SDL_CreateTexture(render_,sdl_fmt,SDL_TEXTUREACCESS_STREAMING,w,h);
     if (!texture_)
     {
