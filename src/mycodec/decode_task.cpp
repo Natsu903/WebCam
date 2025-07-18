@@ -57,6 +57,11 @@ void DecodeTask::Main()
 				std::cout << "@" << std::flush;
 				need_view_ = true;
 				cur_pts = frame_->pts;
+				if (time_base_)
+				{
+					cur_ms_ = av_rescale_q(frame_->pts, *time_base_, { 1,1000 });
+				}
+
 			}
 			if (frame_cache_)
 			{
@@ -154,9 +159,24 @@ void DecodeTask::Stop()
 	std::unique_lock<std::mutex>lock(mux_);
 	decode_.set_c(nullptr);
 	is_open_ = false;
+	if (time_base_)
+	{
+		delete time_base_;
+		time_base_ = nullptr;
+	}
 	while (!frames_.empty())
 	{
 		av_frame_free(&frames_.front());
 		frames_.pop_front();
 	}
+}
+
+void DecodeTask::set_time_base(AVRational* time_base)
+{
+	if (!time_base) return;
+	std::unique_lock<std::mutex>lock(mux_);
+	if (time_base_) delete time_base_;
+	time_base_ = new AVRational();
+	time_base_->den = time_base->den;
+	time_base_->num = time_base->num;
 }

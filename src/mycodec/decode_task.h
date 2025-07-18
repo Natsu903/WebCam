@@ -31,7 +31,12 @@ public:
 	void set_block_size(int s) { block_size_ = s; }
 
 	void Stop();
+
+	long long cur_ms() { return cur_ms_; }
+	void set_time_base(AVRational* time_base);
 private:
+	AVRational* time_base_ = nullptr;
+	long long cur_ms_ = 0;
 	int block_size_ = 0;//阻塞大小
 	long long syn_pts_ = -1;//同步时间 -1不同步
 	bool is_open_ = false;

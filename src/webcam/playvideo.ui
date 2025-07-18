@@ -6,15 +6,115 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>685</width>
-    <height>414</height>
+    <width>600</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>PlayVideo</string>
   </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="3">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="speed_label">
+     <property name="text">
+      <string>播放速度</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="6">
+    <widget class="QWidget" name="video" native="true"/>
+   </item>
+   <item row="0" column="1">
+    <widget class="QSlider" name="seppd_slider">
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>20</number>
+     </property>
+     <property name="pageStep">
+      <number>2</number>
+     </property>
+     <property name="value">
+      <number>10</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="4">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="speed_now">
+     <property name="text">
+      <string>1x</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="5">
+    <widget class="QSlider" name="pos_slider">
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>999</number>
+     </property>
+     <property name="pageStep">
+      <number>100</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>seppd_slider</sender>
+   <signal>sliderReleased()</signal>
+   <receiver>PlayVideoClass</receiver>
+   <slot>SetSpeed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>304</x>
+     <y>9</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>308</x>
+     <y>-43</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>SetSpeed()</slot>
+ </slots>
 </ui>

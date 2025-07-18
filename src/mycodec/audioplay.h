@@ -92,6 +92,7 @@ public:
 	//播放速度
 	virtual void SetSpeed(float s)
 	{
+		speed_ = s;
 		auto spec = spec_;
 		auto old_freq = spec.freq;
 		spec.freq *= s;
@@ -109,6 +110,7 @@ public:
 
 protected:
 	double time_base_ = 0;
+	float speed_ = 1.0;
 	AudioPlay();
 	//回调函数用于处理异步
 	virtual void Callback(unsigned char* stream, int len) = 0;

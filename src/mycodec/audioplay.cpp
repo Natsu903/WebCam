@@ -83,7 +83,7 @@ public:
 		//pts换算成毫秒
 		if(time_base_>0)
 			ms = ms / (double)1000 / (double)time_base_;
-		return cur_pts_ + ms;
+		return cur_pts_ + speed_*ms;
 	}
 private:
 	long long cur_pts_ = 0;//当前播放位置

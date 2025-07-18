@@ -20,6 +20,8 @@ public:
 	void timerEvent(QTimerEvent* event) override;
 	void Close();
 	void closeEvent(QCloseEvent* event)override;
+public slots:
+	void SetSpeed();
 private:
 	Ui::PlayVideoClass ui;
 	Player player;

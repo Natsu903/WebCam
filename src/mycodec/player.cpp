@@ -14,6 +14,8 @@ bool Player::Open(const char* url, void* winid)
     auto vp = demux_.CopyVideoPara();
     if (vp)
     {
+        //视频总时长
+        this->total_ms_ = vp->total_ms;
         if (!video_decode_.Open(vp->para)) return false;
         video_decode_.set_stream_index(demux_.video_index());//用于过滤音频
         //缓冲
@@ -77,12 +79,17 @@ void Player::Main()
 	auto au = AudioPlay::Instance();
 	auto ap = demux_.CopyAudioPara();
 	auto vp = demux_.CopyVideoPara();
-    if (!ap) return;
+    video_decode_.set_time_base(vp->time_base);
+    
 	while (!is_exit_)
 	{
-		syn = RRescale(au->cur_pts(), ap->time_base, vp->time_base);
-		audio_decode_.set_syn_pts(au->cur_pts() + 10000);
-		video_decode_.set_syn_pts(syn);
+        this->pos_ms_ = video_decode_.cur_ms();
+        if (ap)
+        {
+			syn = RRescale(au->cur_pts(), ap->time_base, vp->time_base);
+			audio_decode_.set_syn_pts(au->cur_pts() + 10000);
+			video_decode_.set_syn_pts(syn);
+        }
 		MSleep(1);
 	}
 }
@@ -113,4 +120,9 @@ void Player::Update()
     if (!f)return;
     au->Push(f);
     FreeFrame(&f);
+}
+
+void Player::SetSpeed(float s)
+{
+    AudioPlay::Instance()->SetSpeed(s);
 }

@@ -109,7 +109,7 @@ int SafetyAVPacketList::Size()
 void SafetyAVPacketList::Clear()
 {
 	std::unique_lock<std::mutex>lock(mux_);
-	while (pkts_.empty())
+	while (!pkts_.empty())
 	{
 		av_packet_free(&pkts_.front());
 		pkts_.pop_front();

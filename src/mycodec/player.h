@@ -17,7 +17,15 @@ public:
 	void Start();
 	//渲染视频播放音频
 	void Update();
+	//调整速度
+	void SetSpeed(float s);
+	//总时长
+	long long total_ms() { return total_ms_; }
+	//当前播放位置
+	long long pos_ms() { return pos_ms_; }
 protected:
+	long long total_ms_=0;
+	long long pos_ms_=0;
 	DemuxTask demux_;			//解封装
 	DecodeTask audio_decode_;	//音频解码
 	DecodeTask video_decode_;	//视频解码
