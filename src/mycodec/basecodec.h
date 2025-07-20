@@ -4,45 +4,47 @@
 #include "tools.h"
 
 /**
- * ±àÂëºÍ½âÂëµÄ»ùÀà
+ * ç¼–ç å’Œè§£ç çš„åŸºç±»
  */
 class WEBCAM_API Codec
 {
 public:
 
 	/**
-	 * ³õÊ¼»¯±àÂëÆ÷ÉÏÏÂÎÄ.
+	 * åˆå§‹åŒ–ç¼–ç å™¨ä¸Šä¸‹æ–‡.
 	 *
-	 * \param codec_id ´«Èë±àÂëÆ÷idÈçAV_CODEC_ID_H264
-	 * \return ·µ»ØÅäÖÃºÃµÄAVCodecContextÖ¸Õë
+	 * \param codec_id ä¼ å…¥ç¼–ç å™¨idå¦‚AV_CODEC_ID_H264
+	 * \return è¿”å›é…ç½®å¥½çš„AVCodecContextæŒ‡é’ˆ
 	 */
 	static AVCodecContext* Create(int codec_id, bool is_encode);
 
 	/**
-	 * ½«±àÂëÆ÷ÉÏÏÂÎÄ´æ´¢µ½ÀàÖĞ.
+	 * å°†ç¼–ç å™¨ä¸Šä¸‹æ–‡å­˜å‚¨åˆ°ç±»ä¸­.
 	 *
 	 * \param c
 	 */
 	void set_c(AVCodecContext* c);
 
 	/**
-	 * ÉèÖÃffmpeg±àÂëÆ÷Ñ¡Ïî²ÎÊı.
+	 * è®¾ç½®ffmpegç¼–ç å™¨é€‰é¡¹å‚æ•°.
 	 *
-	 * \param key ²ÎÊıÀàĞÍ
-	 * \param val ²ÎÊı
-	 * \return ³É¹¦·µ»ØtrueÊ§°Ü·µ»Øfalse
+	 * \param key å‚æ•°ç±»å‹
+	 * \param val å‚æ•°
+	 * \return æˆåŠŸè¿”å›trueå¤±è´¥è¿”å›false
 	 */
 	bool SetOpt(const char* key, const char* val);
 	bool SetOpt(const char* key, int val);
 
 	/**
-	 * ³õÊ¼»¯±à½âÂëÆ÷ÉÏÏÂÎÄ²¢Óë¾ßÌåµÄ±à½âÂëÆ÷¹ØÁª.
+	 * åˆå§‹åŒ–ç¼–è§£ç å™¨ä¸Šä¸‹æ–‡å¹¶ä¸å…·ä½“çš„ç¼–è§£ç å™¨å…³è”.
 	 *
-	 * \return ³É¹¦·µ»Øtrue
+	 * \return æˆåŠŸè¿”å›true
 	 */
 	bool Open();
 
 	AVFrame* CreateFrame();
+
+	virtual void Clear();
 
 protected:
 	AVCodecContext* c_ = nullptr;

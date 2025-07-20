@@ -73,12 +73,19 @@ class WEBCAM_API AudioPlay
 public:
 	//单例模式
 	static AudioPlay* Instance();
+	//暂停
+	virtual void Pause(bool is_pause)=0;
 	virtual void Push(AVFrame* frame);
 	//打开音频 开始播放，调用回调函数
 	virtual bool Open(AVCodecParameters* para);
 	virtual bool Open(BasePara& para);
 	virtual bool Open(AAudioSpec& spec) = 0;
 	virtual void Close() = 0;
+	virtual void Clear()
+	{
+		Close();
+		SetSpeed(speed_);
+	}
 	//获取当前的播放位置
 	virtual long long cur_pts() = 0;
 	void Push(const unsigned char* data, int size,long long pts)

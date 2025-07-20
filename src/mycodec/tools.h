@@ -86,6 +86,11 @@ public:
 		next_ = bt;
 	}
 
+	//暂停、播放
+	virtual void Pause(bool is_pause) { is_pause_ = is_pause; }
+
+	bool is_pause() { return is_pause_; }
+
 protected:
 	//线程入口函数
 	virtual void Main()=0;
@@ -96,6 +101,8 @@ protected:
 	//线程索引号
 	int index_ = 0;
 
+	//是否是暂停状态
+	bool is_pause_ = false;
 private:
 	std::thread th_;
 	std::mutex m_;

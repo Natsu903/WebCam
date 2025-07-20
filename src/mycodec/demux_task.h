@@ -38,6 +38,8 @@ public:
 	void set_syn_type(SYN_TYPE type) { syn_type_ = type; }
 
 	void Stop();
+
+	bool Seek(long long ms);
 private:
 	Demux demux_;
 	std::string url_;

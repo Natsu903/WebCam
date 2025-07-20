@@ -18,16 +18,18 @@ void DecodeTask::Main()
 			frame_ = av_frame_alloc();
 		}
 	}
-
-	long long cur_pts = -1;//当前解码到的pts
-
 	
 	while (!is_exit_)
 	{
+		if (is_pause())
+		{
+			MSleep(1);
+			continue;
+		}
 		//同步
 		while (!is_exit_)
 		{
-			if (syn_pts_ >= 0 && cur_pts > syn_pts_)
+			if (syn_pts_ >= 0 && cur_pts_ > syn_pts_)
 			{
 				MSleep(1);
 				continue;
@@ -56,7 +58,7 @@ void DecodeTask::Main()
 			{
 				std::cout << "@" << std::flush;
 				need_view_ = true;
-				cur_pts = frame_->pts;
+				cur_pts_ = frame_->pts;
 				if (time_base_)
 				{
 					cur_ms_ = av_rescale_q(frame_->pts, *time_base_, { 1,1000 });
@@ -169,6 +171,19 @@ void DecodeTask::Stop()
 		av_frame_free(&frames_.front());
 		frames_.pop_front();
 	}
+}
+
+void DecodeTask::Clear()
+{
+	pkt_list_.Clear();
+	std::unique_lock<std::mutex>lock(mux_);
+	while (!frames_.empty())
+	{
+		av_frame_free(&frames_.front());
+		frames_.pop_front();
+	}
+	cur_pts_ = -1;
+	decode_.Clear();
 }
 
 void DecodeTask::set_time_base(AVRational* time_base)

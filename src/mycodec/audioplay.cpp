@@ -11,6 +11,20 @@ extern "C"
 class AAudioPlay:public AudioPlay
 {
 public:
+	void Pause(bool is_pause)
+	{	
+		if (is_pause)
+		{
+			pause_begin_ = NowMs();
+			SDL_PauseAudio(1);
+		}
+		else
+		{
+			if(pause_begin_>0)
+				last_ms_ += (NowMs() - pause_begin_);
+			SDL_PauseAudio(0);
+		}
+	}
 	bool Open(AAudioSpec& spec) 
 	{
 		this->spec_ = spec;
@@ -39,6 +53,9 @@ public:
 		SDL_QuitSubSystem(SDL_INIT_AUDIO);
 		std::unique_lock<std::mutex>lock(mux_);
 		audio_datas_.clear();
+		cur_pts_ = 0;
+		last_ms_ = 0;
+		pause_begin_ = 0;
 	}
 	void Callback(unsigned char* stream, int len)
 	{
@@ -86,6 +103,7 @@ public:
 		return cur_pts_ + speed_*ms;
 	}
 private:
+	long long pause_begin_ = 0;//暂停开始时间
 	long long cur_pts_ = 0;//当前播放位置
 	long long last_ms_ = 0;//上次的时间戳
 };
@@ -128,6 +146,7 @@ AudioPlay* AudioPlay::Instance()
 	static AAudioPlay audioplay;
 	return &audioplay;
 }
+
 
 void AudioPlay::Push(AVFrame* frame)
 {

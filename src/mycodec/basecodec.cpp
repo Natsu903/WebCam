@@ -12,7 +12,7 @@ extern "C"
 
 AVCodecContext* Codec::Create(int codec_id,bool is_encode)
 {
-	//²éÕÒ±àÂëÆ÷
+	//æŸ¥æ‰¾ç¼–ç å™¨
 	const AVCodec* codec = nullptr;
 	if (is_encode)
 	{
@@ -26,7 +26,7 @@ AVCodecContext* Codec::Create(int codec_id,bool is_encode)
 	{
 		std::cerr << "avcodec_find_encoder error" << std::endl;
 	}
-	//´´½¨±àÂëÆ÷ÉÏÏÂÎÄ
+	//åˆ›å»ºç¼–ç å™¨ä¸Šä¸‹æ–‡
 	auto c = avcodec_alloc_context3(codec);
 	if (!c)
 	{
@@ -105,4 +105,11 @@ AVFrame* Codec::CreateFrame()
 		return nullptr;
 	}
 	return frame;
+}
+
+void Codec::Clear()
+{
+	std::unique_lock<std::mutex>lock(mux_);
+	if (!c_)return;
+	avcodec_flush_buffers(c_);
 }

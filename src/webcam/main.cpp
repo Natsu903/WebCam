@@ -16,13 +16,13 @@ int main(int argc, char *argv[])
 //cr.set_rtsp_url("rtsp://admin:GZH&password@192.168.31.234/cam/realmonitor?channel=1&subtype=0");
 
     QApplication app(argc, argv);
-    //WebCam window;
-    //window.show();
-	//auto re = app.exec();
-	//return re;
+	WebCam window;
+	window.show();
+	auto re = app.exec();
+	return re;
     //测试播放器
-    PPlayVideo pv;
-    pv.Open("v1080.mp4");
-    pv.exec();
+    //PPlayVideo pv;
+    //pv.Open("v1080.mp4");
+    //pv.exec();
     return 0;
 }

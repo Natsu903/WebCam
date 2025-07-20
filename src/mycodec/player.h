@@ -23,6 +23,10 @@ public:
 	long long total_ms() { return total_ms_; }
 	//当前播放位置
 	long long pos_ms() { return pos_ms_; }
+	//设置播放位置
+	bool Seek(long long ms);
+
+	void Pause(bool is_pause) override;
 protected:
 	long long total_ms_=0;
 	long long pos_ms_=0;

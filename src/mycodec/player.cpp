@@ -83,6 +83,11 @@ void Player::Main()
     
 	while (!is_exit_)
 	{
+        if (is_pause())
+        {
+            MSleep(1);
+            continue;
+        }
         this->pos_ms_ = video_decode_.cur_ms();
         if (ap)
         {
@@ -125,4 +130,22 @@ void Player::Update()
 void Player::SetSpeed(float s)
 {
     AudioPlay::Instance()->SetSpeed(s);
+}
+
+bool Player::Seek(long long ms)
+{
+    demux_.Seek(ms);
+    audio_decode_.Clear();
+    video_decode_.Clear();
+    AudioPlay::Instance()->Clear();
+    return true;
+}
+
+void Player::Pause(bool is_pause)
+{
+    BaseThread::Pause(is_pause);
+    demux_.Pause(is_pause);
+    audio_decode_.Pause(is_pause);
+    video_decode_.Pause(is_pause);
+    AudioPlay::Instance()->Pause(is_pause);
 }

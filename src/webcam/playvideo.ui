@@ -11,72 +11,191 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>PlayVideo</string>
+   <string>回放</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="3">
-    <spacer name="horizontalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
+  <property name="windowIcon">
+   <iconset resource="webcam.qrc">
+    <normaloff>:/webcam/img/cam1.png</normaloff>:/webcam/img/cam1.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QWidget" name="speed_widget" native="true">
+     <property name="maximumSize">
       <size>
-       <width>40</width>
+       <width>16777215</width>
        <height>20</height>
       </size>
      </property>
-    </spacer>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="speed_label">
-     <property name="text">
-      <string>播放速度</string>
-     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="speed_label">
+        <property name="text">
+         <string>播放速度</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="speed_slider">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
+        <property name="pageStep">
+         <number>2</number>
+        </property>
+        <property name="value">
+         <number>10</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="speed_now">
+        <property name="text">
+         <string>1x</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>181</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>182</width>
+          <height>17</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="1" column="0" colspan="6">
+   <item>
     <widget class="QWidget" name="video" native="true"/>
    </item>
-   <item row="0" column="1">
-    <widget class="QSlider" name="seppd_slider">
-     <property name="minimum">
-      <number>1</number>
-     </property>
-     <property name="maximum">
-      <number>20</number>
-     </property>
-     <property name="pageStep">
-      <number>2</number>
-     </property>
-     <property name="value">
-      <number>10</number>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="4">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
+   <item>
+    <widget class="QWidget" name="toolbutton_widget" native="true">
+     <property name="maximumSize">
       <size>
-       <width>40</width>
-       <height>20</height>
+       <width>600</width>
+       <height>40</height>
       </size>
      </property>
-    </spacer>
-   </item>
-   <item row="0" column="2">
-    <widget class="QLabel" name="speed_now">
-     <property name="text">
-      <string>1x</string>
-     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>74</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="playbtn">
+        <property name="minimumSize">
+         <size>
+          <width>40</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border: none;</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="webcam.qrc">
+          <normaloff>:/playvideo/img/pause_surface.png</normaloff>:/playvideo/img/pause_surface.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>40</width>
+          <height>40</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>74</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="2" column="0" colspan="5">
+   <item>
     <widget class="QSlider" name="pos_slider">
      <property name="minimum">
       <number>1</number>
@@ -95,26 +214,97 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="webcam.qrc"/>
+  <include location="../../../WebCamDemo/资料/第九章代码XView0.1包含发布文件/src/xviewer/xviewer.qrc"/>
+ </resources>
  <connections>
   <connection>
-   <sender>seppd_slider</sender>
+   <sender>speed_slider</sender>
    <signal>sliderReleased()</signal>
    <receiver>PlayVideoClass</receiver>
    <slot>SetSpeed()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>304</x>
-     <y>9</y>
+     <x>131</x>
+     <y>16</y>
     </hint>
     <hint type="destinationlabel">
-     <x>308</x>
-     <y>-43</y>
+     <x>299</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pos_slider</sender>
+   <signal>sliderReleased()</signal>
+   <receiver>PlayVideoClass</receiver>
+   <slot>PlayPos()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>299</x>
+     <y>389</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>playbtn</sender>
+   <signal>clicked()</signal>
+   <receiver>PlayVideoClass</receiver>
+   <slot>Pause()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>299</x>
+     <y>358</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>299</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pos_slider</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>PlayVideoClass</receiver>
+   <slot>Move()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>329</x>
+     <y>385</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>336</x>
+     <y>-13</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pos_slider</sender>
+   <signal>sliderPressed()</signal>
+   <receiver>PlayVideoClass</receiver>
+   <slot>Pressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>375</x>
+     <y>388</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>378</x>
+     <y>-19</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
   <slot>SetSpeed()</slot>
+  <slot>PlayPos()</slot>
+  <slot>Pause()</slot>
+  <slot>Move()</slot>
+  <slot>Pressed()</slot>
  </slots>
 </ui>

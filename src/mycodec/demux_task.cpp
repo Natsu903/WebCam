@@ -10,6 +10,11 @@ void DemuxTask::Main()
     AVPacket pkt;
 	while (!is_exit_)
 	{
+		if (is_pause())
+		{
+			MSleep(1);
+			continue;
+		}
 		if (!demux_.Read(&pkt))
 		{
 			//读取失败
@@ -55,4 +60,13 @@ void DemuxTask::Stop()
 {
 	BaseThread::Stop();
 	demux_.set_c(nullptr);
+}
+
+bool DemuxTask::Seek(long long ms)
+{
+	auto vp = demux_.CopyVideoPara();
+	if (!vp) return false;
+	auto pts = av_rescale_q(ms, { 1,1000 }, *vp->time_base);
+	demux_.Seek(pts, video_index());
+	return true;
 }
