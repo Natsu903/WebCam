@@ -5,18 +5,20 @@
 #include <vector>
 #include <mutex>
 
-
-static void Trace(const char* format, ...)
+class ETool
 {
-	va_list ap;
-	va_start(ap,format);
-	std::string sBuffer;
-	sBuffer.resize(1024 * 10);
-	vsprintf((char*)(sBuffer.c_str()),format, ap);
-	OutputDebugStringA(sBuffer.c_str());
-	va_end(ap);
-}
-
+public:
+	static void Trace(const char* format, ...)
+	{
+		va_list ap;
+		va_start(ap, format);
+		std::string sBuffer;
+		sBuffer.resize(1024 * 10);
+		vsprintf((char*)(sBuffer.c_str()), format, ap);
+		OutputDebugStringA(sBuffer.c_str());
+		va_end(ap);
+	}
+};
 
 class ThreadFuncBase {};
 typedef int (ThreadFuncBase::* FUNCTYPE)();
@@ -120,7 +122,7 @@ public:
 		if (m_worker_.load() != nullptr && (m_worker_.load() != &worker))
 		{
 			::ThreadWorker* pWorker = m_worker_.load();
-			Trace("delete pWorker = %08X m_worker = %08X\r\n", pWorker, m_worker_.load());
+			ETool::Trace("delete pWorker = %08X m_worker = %08X\r\n", pWorker, m_worker_.load());
 			m_worker_.store(nullptr);
 			delete pWorker;
 		}
@@ -131,7 +133,7 @@ public:
 			return;
 		}
 		::ThreadWorker* pWorker = m_worker_.load();
-		Trace("new pWorker = %08X m_worker = %08X\r\n", pWorker, m_worker_.load());
+		ETool::Trace("new pWorker = %08X m_worker = %08X\r\n", pWorker, m_worker_.load());
         m_worker_.store(pWorker);
 	}
 
@@ -162,7 +164,7 @@ private:
 					int ret = worker();
 					if (ret != 0)
 					{
-						Trace("Thread found warning code %d\r\n", ret);
+						ETool::Trace("Thread found warning code %d\r\n", ret);
 					}
 					if (ret < 0)
 					{

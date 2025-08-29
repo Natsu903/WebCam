@@ -4,7 +4,7 @@
 
 #pragma comment(lib, "ws2_32.lib")
 
-class BBuffer :public std::string 
+class BBuffer :public std::string
 {
 public:
 	BBuffer(const char* str)
@@ -31,13 +31,60 @@ public:
 	}
 
 	operator char* () const { return (char*)c_str(); }
-    operator const char* () const { return c_str(); }
+	operator const char* () const { return c_str(); }
 	operator BYTE* () const { return (BYTE*)c_str(); }
 	operator void* () const { return (void*)c_str(); }
 	void Update(const char* buffer, size_t size)
-	{ 
+	{
 		resize(size);
 		memcpy((void*)c_str(), buffer, size);
+	}
+
+	void Zero()
+	{
+		if (size() > 0)
+			memset((void*)c_str(), 0, size());
+	}
+
+	BBuffer& operator<<(const BBuffer& buf)
+	{
+		if (this != buf)
+		{
+			*this+=buf; 
+		}
+		else
+		{
+			BBuffer tmp = buf;
+			*this = tmp;
+		}
+		return *this;
+	}
+	BBuffer& operator<<(const std::string& str)
+	{
+		*this += str;
+		return *this;
+	}
+	BBuffer& operator<<(const char* str)
+	{
+		*this += str;
+		return *this;
+	}
+	BBuffer& operator<<(int data)
+	{
+		char s[16] = "";
+		snprintf(s, sizeof(s), "%d", data);
+		*this += s;
+		return *this;
+	}
+	const BBuffer& operator>>(int data) const
+	{
+		data = atoi(c_str());
+		return *this;
+	}
+	const BBuffer& operator>>(short data) const
+	{
+		data = (short)atoi(c_str());
+		return *this;
 	}
 };
 
@@ -213,7 +260,16 @@ public:
 
     int Send(const BBuffer& buffer)
 	{
-		return send(*m_socket_, buffer, buffer.size(), 0);
+		int index = 0;
+		char* pData = buffer;
+		while (index < (int)buffer.size())
+        {
+            int ret = send(*m_socket_, pData + index, buffer.size() - index, 0);
+            if (ret < 0) return ret;
+			if (ret == 0) break;
+            index += ret;
+        }
+		return index;
 	}
 
 	void Close()
