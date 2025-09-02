@@ -3,13 +3,13 @@
 #include "rtspserver.h"
 
 
-
 int main()
 {  
-    RTSPServer server;
-    server.Init();
-    server.Invoke();
-    getchar();
-    server.Stop();
+	RTSPServer server;
+	server.Init();
+	server.Invoke();
+	printf("Press any key to exit...\r\n");
+	getchar();
+	server.Stop();
     return 0;
 }

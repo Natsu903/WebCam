@@ -426,7 +426,6 @@ background-color: rgb(0, 102, 184);
  </customwidgets>
  <resources>
   <include location="webcam.qrc"/>
-  <include location="../../../WebCamDemo/资料/第九章代码XView0.1包含发布文件/src/xviewer/xviewer.qrc"/>
  </resources>
  <connections>
   <connection>

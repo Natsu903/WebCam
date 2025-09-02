@@ -14,8 +14,11 @@ public:
 		va_start(ap, format);
 		std::string sBuffer;
 		sBuffer.resize(1024 * 10);
-		vsprintf((char*)(sBuffer.c_str()), format, ap);
-		OutputDebugStringA(sBuffer.c_str());
+		int result = _vsnprintf((char*)sBuffer.data(), sBuffer.size() - 1, format, ap);
+		if (result >= 0) {
+			sBuffer[result] = '\0'; // 确保字符串结尾
+			OutputDebugStringA(sBuffer.c_str());
+		}
 		va_end(ap);
 	}
 };
@@ -25,7 +28,7 @@ typedef int (ThreadFuncBase::* FUNCTYPE)();
 class ThreadWorker
 {
 public:
-	ThreadWorker() :thiz_(nullptr), func_(nullptr) {}
+	ThreadWorker() :thiz_(nullptr), func_(nullptr){}
 	ThreadWorker(void* obj, FUNCTYPE f) :thiz_((ThreadFuncBase*)obj), func_(f) {}
 	//复制构造函数
 	ThreadWorker(const ThreadWorker& worker)
@@ -132,7 +135,7 @@ public:
 			m_worker_.store(nullptr);
 			return;
 		}
-		::ThreadWorker* pWorker = m_worker_.load();
+		::ThreadWorker* pWorker = new ::ThreadWorker(worker);
 		ETool::Trace("new pWorker = %08X m_worker = %08X\r\n", pWorker, m_worker_.load());
         m_worker_.store(pWorker);
 	}
@@ -223,7 +226,7 @@ public:
 		m_threads_.clear();
 	}
 
-	bool InVoke()
+	bool Invoke()
 	{ 
 		bool ret = true;
 		for (size_t i = 0; i < m_threads_.size(); i++)

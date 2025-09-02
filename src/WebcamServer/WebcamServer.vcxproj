@@ -72,6 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(IncludePath)</IncludePath>
+    <OutDir>..\..\bin\x64</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -126,12 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="mediafile.cpp" />
+    <ClCompile Include="rtphelper.cpp" />
     <ClCompile Include="rtspserver.cpp" />
     <ClCompile Include="webcamserver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basequeue.h" />
     <ClInclude Include="basethread.h" />
+    <ClInclude Include="bbuffer.h" />
+    <ClInclude Include="mediafile.h" />
+    <ClInclude Include="rtphelper.h" />
     <ClInclude Include="rtspserver.h" />
     <ClInclude Include="socket.h" />
   </ItemGroup>

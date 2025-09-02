@@ -21,6 +21,12 @@
     <ClCompile Include="rtspserver.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="mediafile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="rtphelper.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="socket.h">
@@ -33,6 +39,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="basequeue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mediafile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="bbuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="rtphelper.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

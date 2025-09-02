@@ -1,92 +1,10 @@
 #pragma once
 #include <WinSock2.h>
 #include <memory>
+#include "bbuffer.h"
+#include "basethread.h"
 
 #pragma comment(lib, "ws2_32.lib")
-
-class BBuffer :public std::string
-{
-public:
-	BBuffer(const char* str)
-	{
-		resize(strlen(str));
-		memcpy((void*)c_str(), str, size());
-	}
-	BBuffer(size_t size = 0) :std::string()
-	{
-		if (size > 0)
-		{
-			resize(size);
-			memset(*this, 0, this->size());
-		}
-	}
-	BBuffer(void* buffer, size_t size) :std::string()
-	{
-		resize(size);
-		memcpy((void*)c_str(), buffer, size);
-	}
-	~BBuffer()
-	{
-		std::string::~basic_string();
-	}
-
-	operator char* () const { return (char*)c_str(); }
-	operator const char* () const { return c_str(); }
-	operator BYTE* () const { return (BYTE*)c_str(); }
-	operator void* () const { return (void*)c_str(); }
-	void Update(const char* buffer, size_t size)
-	{
-		resize(size);
-		memcpy((void*)c_str(), buffer, size);
-	}
-
-	void Zero()
-	{
-		if (size() > 0)
-			memset((void*)c_str(), 0, size());
-	}
-
-	BBuffer& operator<<(const BBuffer& buf)
-	{
-		if (this != buf)
-		{
-			*this+=buf; 
-		}
-		else
-		{
-			BBuffer tmp = buf;
-			*this = tmp;
-		}
-		return *this;
-	}
-	BBuffer& operator<<(const std::string& str)
-	{
-		*this += str;
-		return *this;
-	}
-	BBuffer& operator<<(const char* str)
-	{
-		*this += str;
-		return *this;
-	}
-	BBuffer& operator<<(int data)
-	{
-		char s[16] = "";
-		snprintf(s, sizeof(s), "%d", data);
-		*this += s;
-		return *this;
-	}
-	const BBuffer& operator>>(int data) const
-	{
-		data = atoi(c_str());
-		return *this;
-	}
-	const BBuffer& operator>>(short data) const
-	{
-		data = (short)atoi(c_str());
-		return *this;
-	}
-};
 
 /**
 * 封装套接字
@@ -147,6 +65,14 @@ public:
 		memset(&m_addr_,0,sizeof(m_addr_));
 		m_addr_.sin_family=AF_INET;
 	}
+	EAddress(const std::string& ip, short port)
+	{
+		m_ip_ = ip;
+		m_port_ = port;
+		m_addr_.sin_port = htons(port);
+		m_addr_.sin_addr.s_addr = inet_addr(ip.c_str());
+	}
+
 	EAddress(const EAddress& addr)
 	{
 		m_ip_= addr.m_ip_;
@@ -163,7 +89,16 @@ public:
 		}
 		return *this;
 	}
+
+	EAddress& operator=(short port)
+	{ 
+		m_port_ = port;
+        m_addr_.sin_port = htons(port);
+		return *this;
+	}
+
 	~EAddress(){}
+
 	void Update(const std::string& ip, short port)
 	{
         m_ip_ = ip;
@@ -171,6 +106,7 @@ public:
         m_addr_.sin_port = htons(port);
         m_addr_.sin_addr.s_addr = inet_addr(ip.c_str());
 	}
+
 	operator const sockaddr* () const
 	{
         return (sockaddr*)&m_addr_;
@@ -199,9 +135,11 @@ private:
 class ESocket
 {
 public:
+	//用于创建新的连接
 	ESocket(bool isTcp = true):m_socket_(new Socket(isTcp)),m_istcp_(isTcp){}
 
-	ESocket(SOCKET sock, bool isTcp = true) :m_socket_(new Socket(isTcp)), m_istcp_(isTcp){}
+	//用于封装已存在的socket句柄
+	ESocket(SOCKET sock, bool isTcp = true) :m_socket_(new Socket(sock)), m_istcp_(isTcp){}
 
 	// 拷贝构造函数,深拷贝套接字对象  
 	ESocket(const ESocket& socket):m_socket_(socket.m_socket_),m_istcp_(socket.m_istcp_) {}
@@ -222,7 +160,7 @@ public:
 	}
 
 	// 隐式类型转换，将ESocket对象转为SOCKET类型 
-	operator SOCKET()
+	operator SOCKET() const
 	{
 		return *m_socket_;
 	}
@@ -233,33 +171,39 @@ public:
 		{
 			m_socket_.reset(new Socket(m_istcp_));
 		}
-		return ::bind(*m_socket_, addr, addr.size());
+		int ret = bind(*m_socket_, addr, addr.size());
+		return ret;
 	}
 
 	int Listen(int backlog = SOMAXCONN)
 	{
-		return ::listen(*m_socket_, backlog);
+		return listen(*m_socket_, backlog);
 	}
 
 	ESocket Accept(EAddress& addr)
 	{
 		int len=addr.size();
-		SOCKET s = accept(*m_socket_, addr, &len);
+		if(m_socket_ == nullptr) return ESocket(INVALID_SOCKET,true);
+		SOCKET server=*m_socket_;
+		if(server==INVALID_SOCKET) return ESocket(INVALID_SOCKET,true);
+		SOCKET s = accept(server, addr, &len);
 		return ESocket(s,m_istcp_);
 	}
 
 	int Connect(const EAddress& addr)
 	{
-		return ::connect(*m_socket_, addr, addr.size());
+		return connect(*m_socket_, addr, addr.size());
 	}
 
 	int Recv(BBuffer& buffer)
 	{
-		return recv(*m_socket_, buffer,buffer.size(),0);
+		int ret = recv(*m_socket_, buffer,buffer.size(),0);
+		return ret;
 	}
 
     int Send(const BBuffer& buffer)
 	{
+		ETool::Trace("send:%s\r\n", (char*)buffer);
 		int index = 0;
 		char* pData = buffer;
 		while (index < (int)buffer.size())
