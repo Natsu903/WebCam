@@ -57,75 +57,49 @@ void MediaFile::Reset()
 	}
 }
 
-long MediaFile::FindH264Head()
+long MediaFile::FindH264Head(int& headsize)
 {
-	unsigned char buffer[4];
-
-	// 重置文件指针到开始位置
-	fseek(m_file_, 0, SEEK_SET);
-
 	while (!feof(m_file_)) {
-		// 读取一个字节
-		int byte = fgetc(m_file_);
-		if (byte == EOF) {
-			break;
+		char c = 0x7F;
+		while (!feof(m_file_)) {//feof = file end of file
+			c = fgetc(m_file_);
+			if (c == 0) break;
 		}
-
-		// 检查是否为0x00
-		if ((unsigned char)byte == 0x00) {
-			// 记录当前位置
-			long current_pos = ftell(m_file_);
-
-			// 尝试读取后续3个字节
-			size_t read_count = fread(buffer, 1, 3, m_file_);
-			if (read_count >= 2) {
-				// 检查是否匹配H.264起始码模式
-				if (buffer[0] == 0x00 && buffer[1] == 0x01) {
-					// 找到3字节起始码: 0x000001
-					return current_pos - 1;  // 指向第一个0x00的位置
+		if (!feof(m_file_)) {
+			c = fgetc(m_file_);
+			if (c == 0) {
+				c = fgetc(m_file_);
+				if (c == 1) {//找到了一个头
+					headsize = 3;
+					return ftell(m_file_) - 3;
 				}
-				else if (read_count >= 3 && buffer[0] == 0x00 && buffer[1] == 0x00 && buffer[2] == 0x01) {
-					// 找到4字节起始码: 0x00000001
-					return current_pos - 1;  // 指向第一个0x00的位置
+				else if (c == 0) {
+					c = fgetc(m_file_);
+					if (c == 1) {//找到了一个头
+						headsize = 4;
+						return ftell(m_file_) - 4;
+					}
 				}
 			}
-
-			// 如果没有找到匹配，回退文件指针到下一个位置继续查找
-			fseek(m_file_, current_pos, SEEK_SET);
 		}
 	}
-
-	return -1;  // 未找到H.264头部
+	return -1;
 }
 
 BBuffer MediaFile::ReadH264Frame()
 {
-	if (!m_file_) {
-		return BBuffer();
+	if (m_file_) {
+		int headsize = 0;
+		long off = FindH264Head(headsize);
+		if (off == -1) return BBuffer();
+		fseek(m_file_, off + headsize, SEEK_SET);
+		long tail = FindH264Head(headsize);
+		if (tail == -1) tail = m_size_;
+		long size = tail - off;
+		fseek(m_file_, off, SEEK_SET);
+		BBuffer result(size);
+		fread(result, 1, size, m_file_);
+		return result;
 	}
-
-	long off = FindH264Head();
-	if (off == -1) {
-		return BBuffer();
-	}
-
-	// 保存当前位置并查找下一帧
-	long current_pos = ftell(m_file_);
-	fseek(m_file_, off + (ftell(m_file_) - current_pos), SEEK_SET);
-
-	long tail = FindH264Head();
-	if (tail == -1) {
-		tail = m_size_;
-	}
-
-	long size = tail - off;
-	if (size <= 0) {
-		return BBuffer();
-	}
-
-	fseek(m_file_, off, SEEK_SET);
-	BBuffer result(size);
-	fread(result, 1, size, m_file_);
-
-	return result;
+	return BBuffer();
 }
