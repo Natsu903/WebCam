@@ -102,7 +102,7 @@ public:
 	void Update(const std::string& ip, short port)
 	{
         m_ip_ = ip;
-        m_port_ = port;
+        m_port_ = (unsigned short)port;
         m_addr_.sin_port = htons(port);
         m_addr_.sin_addr.s_addr = inet_addr(ip.c_str());
 	}
@@ -121,10 +121,18 @@ public:
 	{
         return &m_addr_;
 	}
+
 	int size()const{return sizeof(sockaddr_in);}
+
+	const std::string& ip() const{return m_ip_;}
+
+	unsigned short port() const{return m_port_;}
+
+	void Fresh(){m_ip_ = inet_ntoa(m_addr_.sin_addr);}
+
 private:
 	std::string m_ip_;
-	short m_port_;
+	unsigned short m_port_;
 	sockaddr_in m_addr_;
 };
 
