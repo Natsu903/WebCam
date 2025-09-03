@@ -47,8 +47,12 @@ public:
 	RTPHelper():timestamp(0),m_udp(false)
 	{
 		m_udp.Bind(EAddress("0.0.0.0", (short)55000));
+		m_file_=fopen("./out.bin", "wb+");
 	}
-	~RTPHelper(){}
+	~RTPHelper()
+	{
+        fclose(m_file_);
+	}
 
 	int SendMediaFrame(RTPFrame& rtpframe, BBuffer& frame, const EAddress& client);
 
@@ -59,5 +63,6 @@ private:
 private:
 	DWORD timestamp;
     ESocket m_udp;
+	FILE* m_file_;
 };
 

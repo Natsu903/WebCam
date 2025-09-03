@@ -16,7 +16,7 @@ public:
 	void Reset();
 
 private:
-	long FindH264Head();
+	long FindH264Head(int& headsize);
 	BBuffer ReadH264Frame();
 private:
 	long m_size_;

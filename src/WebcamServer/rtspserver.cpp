@@ -179,23 +179,26 @@ void RTSPReply::SetSession(const BBuffer& session)
 	m_session_ = session;
 }
 
-RTSPSession::RTSPSession(const ESocket& client):m_client_(client)
+RTSPSession::RTSPSession(const ESocket& client) :m_client_(client)
 {
 	//保证生成唯一的session id
 	UUID uuid;
 	UuidCreate(&uuid);
 	m_id_.resize(8);
-	snprintf((char*)m_id_.c_str(), m_id_.size(), "%u%u", uuid.Data1,uuid.Data2);
+	snprintf((char*)m_id_.c_str(), m_id_.size(), "%u%u", uuid.Data1, uuid.Data2);
+	m_port_ = -1;
 }
 
 RTSPSession::RTSPSession(const RTSPSession& session)
 {
 	m_id_=session.m_id_;
 	m_client_=session.m_client_;
+	m_port_=session.m_port_;
 }
 
 RTSPSession::RTSPSession()
 {
+	m_port_ = -1;
 	//保证生成唯一的session id
 	UUID uuid;
 	UuidCreate(&uuid);
@@ -218,9 +221,12 @@ int RTSPSession::PickRequestAndReply(RTSPPLAYCB cb, RTSPServer* thiz)
 		}
 		RTSPReply reply = Reply(req);
 		ret = m_client_.Send(reply.toBuffer());
-		if (req.method() == 3)
+		if (req.method() == 2)
 		{
 			m_port_ = (short)atoi(req.port());
+		}
+		if (req.method() == 3)
+		{
             cb(thiz,*this);
 		}
 	} while (ret>=0);
@@ -233,6 +239,7 @@ EAddress RTSPSession::GetClientUDPAddress() const
 	EAddress addr;
 	int len = addr.size();
 	getsockname(m_client_, addr,&len);
+	addr.Fresh();
 	addr = m_port_;
 	return addr;
 }
@@ -305,7 +312,12 @@ RTSPRequest RTSPSession::AnalyzeRequest(const BBuffer& buffer)
 	else if(strcmp(method, "SETUP")==0)
 	{
 		//SETUP
-		line=PickOneLine(data);
+		do
+		{
+			line = PickOneLine(data);
+			if (strstr((const char*)line, "client_port=") == nullptr) continue;
+			break;
+		}while (line.size() > 0);
 		int port[2] = { 0,0 };
 		if (sscanf(line, "Transport: RTP/AVP;unicast;client_port=%d-%d\r\n",port,port+1) == 2)
 		{
@@ -375,6 +387,7 @@ RTSPSession& RTSPSession::operator=(const RTSPSession& session)
 	{
 		m_id_ = session.m_id_;
 		m_client_ = session.m_client_;
+		m_port_ = session.m_port_;
 	}
 	return *this;
 }
