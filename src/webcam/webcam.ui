@@ -231,9 +231,9 @@ background-color: rgb(0, 102, 184);
    <widget class="QLabel" name="status">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>520</x>
       <y>20</y>
-      <width>181</width>
+      <width>81</width>
       <height>31</height>
      </rect>
     </property>
@@ -283,6 +283,28 @@ background-color: rgb(0, 102, 184);
     </property>
     <property name="autoExclusive">
      <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_open_url">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>35</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>打开服务端链接</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="autoExclusive">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
@@ -620,6 +642,22 @@ background-color: rgb(0, 102, 184);
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>btn_open_url</sender>
+   <signal>clicked()</signal>
+   <receiver>webcamClass</receiver>
+   <slot>OpenUrl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>415</x>
+     <y>50</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>MaxWindow()</slot>
@@ -632,5 +670,6 @@ background-color: rgb(0, 102, 184);
   <slot>SelectCam(QModelIndex)</slot>
   <slot>SelectDate(QDate)</slot>
   <slot>PlayVideo(QModelIndex)</slot>
+  <slot>OpenUrl()</slot>
  </slots>
 </ui>

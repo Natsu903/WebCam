@@ -161,6 +161,7 @@
     <ClInclude Include="private_sdl.h" />
     <ClInclude Include="tools.h" />
     <ClInclude Include="video_view.h" />
+    <ClInclude Include="vlcdecode.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="audioplay.cpp" />
@@ -177,6 +178,7 @@
     <ClCompile Include="private_sdl.cpp" />
     <ClCompile Include="tools.cpp" />
     <ClCompile Include="video_view.cpp" />
+    <ClCompile Include="vlcdecode.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

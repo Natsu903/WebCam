@@ -3,6 +3,7 @@
 #include "camera_widget.h"
 #include "camera_record.h"
 #include "PPlayVideo.h"
+#include "vlcdecode.h"
 
 #include <QMouseEvent>
 #include <QPoint>
@@ -289,6 +290,65 @@ void WebCam::PlayVideo(QModelIndex index)
     play.Open(path.toUtf8());
     play.exec();
 }
+
+void WebCam::OpenUrl()
+{
+    QDialog* widget = new QDialog(this);
+	widget->setWindowTitle("打开服务端URL");
+    widget->resize(800, 650);
+
+	QVBoxLayout* layout = new QVBoxLayout(widget);
+    QWidget* video_widget = new QWidget(widget);
+    video_widget->resize(800, 600);
+    layout->addWidget(video_widget,9);
+
+    QHBoxLayout* hbox = new QHBoxLayout();
+    QLabel* label = new QLabel(widget);
+    label->setText("请输入RTSP服务端URL");
+    hbox->addWidget(label,1);
+
+    QLineEdit* edit = new QLineEdit(widget);
+    hbox->addWidget(edit,3);
+
+    QPushButton* btn = new QPushButton(widget);
+    btn->setText("打开");
+	hbox->addWidget(btn, 1);
+
+	layout->addLayout(hbox,1);
+
+    connect(btn, &QPushButton::clicked, [=]() {
+        if (edit->text().isEmpty())
+        {
+			QMessageBox::warning(this, "提示", "请输入RTSP服务端URL");
+			return;
+        }
+        if (!is_play_||!decode_)
+        {
+			decode_ = std::make_unique<VLCDecode>();
+			decode_->Init();
+			decode_->SetWidthAndHeight(800, 600);
+			decode_->Play(edit->text().toStdString().c_str(), (void*)video_widget->winId());
+			is_play_ = true;
+        }
+        else
+        {
+			QMessageBox::warning(this, "提示", "请关闭窗口重试");
+			return;
+        }
+    });
+
+	connect(widget, &QDialog::finished, [=](int result) {
+		if (decode_)
+		{
+			decode_->Stop();
+			decode_.reset();
+            is_play_ = false;
+		}
+		});
+
+	widget->exec();
+}
+
 
 void WebCam::mouseMoveEvent(QMouseEvent * event)
 {

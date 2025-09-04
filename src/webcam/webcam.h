@@ -4,6 +4,8 @@
 #include "ui_webcam.h"
 #include <QMenu>
 
+class VLCDecode;
+
 class WebCam : public QWidget
 {
     Q_OBJECT
@@ -43,6 +45,9 @@ public slots:
     //选择时间，播放视频
     void PlayVideo(QModelIndex index);
 
+    //打开服务端链接
+    void OpenUrl();
+
 protected:
     //鼠标拖动窗口
     void mouseMoveEvent(QMouseEvent* event)override;
@@ -70,5 +75,7 @@ private:
     bool isDragging = false;
     QPoint dragPosition;
     QMenu left_menu_;
+    std::unique_ptr<VLCDecode> decode_= nullptr;
+    bool is_play_ = false;
 };
 

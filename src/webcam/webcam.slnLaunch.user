@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "新建配置文件",
+    "Projects": [
+      {
+        "Path": "..\\WebcamServer\\WebcamServer.vcxproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "webcam.vcxproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
